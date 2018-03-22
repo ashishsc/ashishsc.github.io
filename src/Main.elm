@@ -1,7 +1,9 @@
 module Main exposing (..)
 
-import Html exposing (Html, text, div, h1, img)
+import Html exposing (Html, div, h1, img, text)
 import Html.Attributes exposing (src)
+import Style
+import Style.StyleSheet
 
 
 ---- MODEL ----
@@ -27,6 +29,11 @@ type Msg
 update : Msg -> Model -> ( Model, Cmd Msg )
 update msg model =
     ( model, Cmd.none )
+
+
+stylesheet : Style.StyleSheet
+stylesheet =
+    undefined
 
 
 
