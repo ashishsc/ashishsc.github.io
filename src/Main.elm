@@ -1,6 +1,6 @@
 module Main exposing (..)
 
-import Color
+import Color as C exposing (Color, rgb)
 import Element exposing (..)
 import Element.Attributes exposing (..)
 import Html
@@ -8,6 +8,24 @@ import Style exposing (..)
 import Style.Color as Color
 import Style.Font as Font
 import Style.Transition as Transition
+
+
+-- Colorscheme: http://paletton.com/#uid=54P0u0kllllaFw0g0qFqFg0w0aF
+
+
+darkestPurple : C.Color
+darkestPurple =
+    rgb 70 46 116
+
+
+purple : C.Color
+purple =
+    rgb 98 40 112
+
+
+lightestPink : C.Color
+lightestPink =
+    rgb 145 48 89
 
 
 type alias Model =
@@ -33,6 +51,7 @@ type Styles
     | Heading
     | Nav
     | NavLink
+    | Base
 
 
 defaultFont : List Font
@@ -50,21 +69,24 @@ stylesheet =
         [ style None []
         , style Heading
             [ Font.typeface defaultFont
-            , Font.size 60
+            , Font.size 80
             ]
         , style Nav
-            [ Font.size 16
+            [ Font.size 20
             , Font.typeface defaultFont
+            , Color.text lightestPink
             ]
         , style NavLink
             []
+        , style Base
+            [ Color.text darkestPurple ]
         ]
 
 
 view : Model -> Html.Html Msg
 view model =
     Element.layout stylesheet <|
-        column None
+        column Base
             [ center, width fill, height fill, moveDown 50 ]
             [ el Heading [ center ] (text "Ashish")
             , navigation Nav
